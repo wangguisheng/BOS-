@@ -11,7 +11,6 @@ import javax.persistence.Table;
 
 import org.apache.struts2.json.annotations.JSON;
 
-
 /**
  * @description:地域信息实体类，主要包含 省市区(县)
  */
@@ -93,7 +92,7 @@ public class Area {
 	public void setShortcode(String shortcode) {
 		this.shortcode = shortcode;
 	}
-	
+
 	@JSON(serialize = false)
 	public Set<SubArea> getSubareas() {
 		return subareas;
@@ -101,13 +100,6 @@ public class Area {
 
 	public void setSubareas(Set<SubArea> subareas) {
 		this.subareas = subareas;
-	}
-
-	@Override
-	public String toString() {
-		return "Area [id=" + id + ", province=" + province + ", city=" + city
-				+ ", district=" + district + ", postcode=" + postcode
-				+ ", citycode=" + citycode + ", shortcode=" + shortcode + "]";
 	}
 
 }

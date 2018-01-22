@@ -98,6 +98,7 @@ public class FixedArea {
 	public void setOperator(String operator) {
 		this.operator = operator;
 	}
+
 	@JSON(serialize = false)
 	public Set<SubArea> getSubareas() {
 		return subareas;
@@ -106,6 +107,7 @@ public class FixedArea {
 	public void setSubareas(Set<SubArea> subareas) {
 		this.subareas = subareas;
 	}
+
 	@JSON(serialize = false)
 	public Set<Courier> getCouriers() {
 		return couriers;

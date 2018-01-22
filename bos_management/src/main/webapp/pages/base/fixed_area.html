@@ -63,12 +63,13 @@
 						interval :500 // 每0.5秒加载10%, 5秒加载完
 					});
 					
+					// 清空列表
+							$("#noassociationSelect").empty();
 					// 发起Ajax请求 
 					$.post("../../fixedArea_findNoAssociationCustomers.action", function(data){
 						// 查询所有 未关联定区客户列表
 						$(data).each(function(){
-							// 清空列表
-							$("#noassociationSelect").empty();
+							
 							var option = $("<option value='"+this.id+"'>"+this.username+"("+this.address+")</option>");
 							$("#noassociationSelect").append(option);
 						});
@@ -78,11 +79,13 @@
 						// 弹出关联窗口 
 						$('#customerWindow').window('open');
 					});
+					
+					// 清空列表
+							$("#associationSelect").empty();
 					$.post("../../fixedArea_findHasAssociationFixedAreaCustomers.action",{"id":rows[0].id} , function(data){
 						// 查询所有 关联当前选中定区客户列表
 						$(data).each(function(){
-							// 清空列表
-							$("#associationSelect").empty();
+							
 							var option = $("<option value='"+this.id+"'>"+this.username+"("+this.address+")</option>");
 							$("#associationSelect").append(option);
 						});

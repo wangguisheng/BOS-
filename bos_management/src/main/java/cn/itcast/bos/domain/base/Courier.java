@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.apache.struts2.json.annotations.JSON;
 
@@ -55,7 +56,13 @@ public class Courier {
 	private TakeTime takeTime;
 
 	@ManyToMany(mappedBy = "couriers")
-	private Set<FixedArea> fixedAreas = new HashSet<FixedArea>();
+	private Set<FixedArea> fixedAreas = new HashSet<>();
+
+	@Transient
+	// 防止被生成数据表中的列
+	public String getInfo() {
+		return name + "(" + company + ")";
+	}
 
 	public Integer getId() {
 		return id;
@@ -128,7 +135,7 @@ public class Courier {
 	public void setVehicleType(String vehicleType) {
 		this.vehicleType = vehicleType;
 	}
-	
+
 	public String getVehicleNum() {
 		return vehicleNum;
 	}
@@ -136,6 +143,7 @@ public class Courier {
 	public void setVehicleNum(String vehicleNum) {
 		this.vehicleNum = vehicleNum;
 	}
+
 	@JSON(serialize = false)
 	public Set<FixedArea> getFixedAreas() {
 		return fixedAreas;
